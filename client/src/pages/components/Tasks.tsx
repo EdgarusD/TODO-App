@@ -2,6 +2,7 @@ import { trpc } from "../../../utils/trpc";
 import * as React from "react";
 import Notasks from "./Notasks";
 import TaskName from "./TaskName";
+import { data } from "autoprefixer";
 
 export default function tasks() {
   const utils = trpc.useContext();
@@ -19,7 +20,10 @@ export default function tasks() {
   });
 
   if (!dataTask.data) {
-    return <div>Loading...</div>;
+    if (!dataTask.error) {
+      return <div className="text-[#666666]">Error</div>;
+    }
+    return <Notasks />;
   }
   const toggleTask = (id: number) => {
     updateMutation.mutate({ id });

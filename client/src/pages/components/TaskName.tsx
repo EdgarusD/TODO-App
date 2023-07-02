@@ -19,6 +19,10 @@ export default function TaskName({ name, id }: taskProps) {
 
   const handlerSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (name.length === 0) {
+      SetIsEditing(false);
+      return;
+    }
     mutation.mutate({ name: nameInput, id: id });
     SetIsEditing(false);
   };
