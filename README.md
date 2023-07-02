@@ -4,6 +4,12 @@
 npm i
 ```
 
+## generate prisma client
+
+```
+npx -w server prisma generate
+```
+
 ## Run postgres
 
 ```
